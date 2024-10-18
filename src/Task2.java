@@ -1,5 +1,5 @@
+import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +17,7 @@ public class Task2 {
     }
 
     public static void main(String[] args) {
-        List<String> listName = new LinkedList<>();
+        List<String> listName = new ArrayList<>();
         listName.add("John");
         listName.add("Bill");
         listName.add("Ivan");

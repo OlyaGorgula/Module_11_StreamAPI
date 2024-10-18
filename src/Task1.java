@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,7 +51,7 @@ public class Task1 {
 
         System.out.println("**********II*************");
 
-        List<String> listName = new LinkedList<>();
+        List<String> listName = new ArrayList<>();
         listName.add("John");
         listName.add("Bill");
         listName.add("Ivan");
