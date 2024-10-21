@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,25 +22,37 @@ public class Task1 {
     }
 
     public static String notAnEvenIndex2(List<String> listNames){
+//        Метод приймає на вхід список імен. Необхідно повернути рядок вигляду 1. Ivan, 3. Peter... лише з тими іменами,
+//        що стоять під непарним індексом (1, 3 тощо)
+
+
+//        AtomicInteger increment = new AtomicInteger();
+//        AtomicInteger increment1 = new AtomicInteger();
+//        increment.getAndIncrement(); // index++
+//        increment1.getAndIncrement(); // index++
+//        String stringNames = listNames
+//                .stream()
+//                .map((s) -> increment.getAndIncrement()+". "+s)
+//                .filter((s) -> { int i = increment1.getAndIncrement(); return i % 2 != 0;})
+//                .collect(Collectors.joining(", ","",""));
+
         StringBuilder arg0 = new StringBuilder();
-        arg0.append("/0");
-        String stringName = listNames
+        AtomicInteger increment = new AtomicInteger();
+        increment.getAndIncrement();
+        String stringNames = listNames
                 .stream()
                 .reduce(arg0,
                         (arg, s) -> {
-                            String[] arrayStr = arg.toString().split("/");
-                            arg.delete(0,arg.length());
-                            arg.append(arrayStr[0]);
-                            int i = Integer.parseInt(arrayStr[1]);
-                            i++;
+                            int i = increment.getAndIncrement();
                             arg.append((i % 2 != 0)? i+". "+s : "");
                             arg.append((i % 2 != 0) && (i < listNames.size())? ", " : "");
-                            arg.append((i < listNames.size())? "/"+i : "");
                             return arg;
-                        },(a1, a2) -> null
-                        ).toString();
+                        },(arg1, arg2) -> null
+                )
+                .toString();
 
-        return stringName;
+
+        return stringNames;
     }
 
     public static void main(String[] args) {

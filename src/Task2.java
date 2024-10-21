@@ -17,6 +17,9 @@ public class Task2 {
     }
 
     public static void main(String[] args) {
+//        Метод приймає на вхід список рядків (можна взяти список із Завдання 1).
+//        Повертає список цих рядків у верхньому регістрі, і відсортованих за спаданням (від Z до A).
+
         List<String> listName = new ArrayList<>();
         listName.add("John");
         listName.add("Bill");

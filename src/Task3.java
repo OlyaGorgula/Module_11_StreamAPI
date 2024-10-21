@@ -1,19 +1,25 @@
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Task3 {
-    public static void sortedNumber(String[] arrayLine){
-        Arrays.stream(arrayLine)
+    public static String sortedNumber(String[] arrayLine){
+        return Arrays.stream(arrayLine)
                 .flatMapToInt(s ->
                         Arrays.stream(s.split(", "))
                         .mapToInt(Integer::parseInt)
                 )
                 .sorted()
-                .forEachOrdered(s->System.out.print(s+", "));
+                .mapToObj(n -> ""+n)
+                .collect(Collectors.joining(", ","",""));
     }
 
     public static void main(String[] args) {
-        //["1, 2, 0", "4, 5"]
+//        Є масив:
+//        ["1, 2, 0", "4, 5"]
+//        Необхідно отримати з масиву всі числа, і вивести їх у відсортованому вигляді через кому , наприклад:
+//        "0, 1, 2, 4, 5"
+
         String[] arrayLine = {"1, 2, 0","4, 5"};
-        Task3.sortedNumber(arrayLine);
+        System.out.println(Task3.sortedNumber(arrayLine));
     }
 }
